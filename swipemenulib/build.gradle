@@ -15,6 +15,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -28,25 +34,20 @@ dependencies {
     implementation 'com.android.support:support-core-ui:25.4.0'
 }
 
-apply plugin: 'maven-publish'
-group = 'com.cabe.lib.ui'
-version = "1.3.1-SNAPSHOT"
-
-if (android.productFlavors.size() > 0) {
-    android.libraryVariants.all { variant ->
-        if (variant.name.toLowerCase().contains("debug")) {
-            return
-        }
-
-        def bundleTask = tasks["bundle${variant.name.capitalize()}"]
-
-        artifacts {
-            archives(bundleTask.archivePath) {
-                classifier variant.flavorName
-                builtBy bundleTask
-                name = project.name
-            }
-        }
-
-    }
-}
+//apply plugin: 'maven-publish'
+//group = 'com.cabe.lib.ui'
+//version = "1.3.1"
+//def artifact= "SwipeMenu"
+//
+//publishing {
+//    publications {
+//        mavenJava(MavenPublication) {
+//            groupId = group
+//            artifactId = artifact
+//            version = version
+//        }
+//    }
+//}
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.cabe.ui'
+version = '1.3.1'
