@@ -33,21 +33,3 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:support-core-ui:25.4.0'
 }
-
-//apply plugin: 'maven-publish'
-//group = 'com.cabe.lib.ui'
-//version = "1.3.1"
-//def artifact= "SwipeMenu"
-//
-//publishing {
-//    publications {
-//        mavenJava(MavenPublication) {
-//            groupId = group
-//            artifactId = artifact
-//            version = version
-//        }
-//    }
-//}
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.cabe.ui'
-version = '1.3.1'
